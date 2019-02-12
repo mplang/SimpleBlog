@@ -7,6 +7,7 @@ const BlogPost = (props) => (
     <tr>
         <td>{props.blogPost.title}</td>
         <td>{props.blogPost.author}</td>
+        <td>{new Date(props.blogPost.updatedAt).toLocaleDateString()}</td>
         <td>{props.blogPost.body}</td>
         <td>
             <Link to={`/view/${props.blogPost._id}`}>View</Link>|
@@ -27,8 +28,6 @@ export default class ListPosts extends Component {
         axios.get('http://localhost:3131/')
             .then(response => {
                 this.setState({ bposts: response.data });
-                console.log(this.state.bposts.blogposts);
-                console.log(this.state.bposts.blogposts.map((curr, i) => { return i; }));
             })
             .catch(function (error) {
                 console.log(error);
@@ -53,6 +52,7 @@ export default class ListPosts extends Component {
                         <tr>
                             <th>Title</th>
                             <th>Author</th>
+                            <th>Date</th>
                             <th>Body</th>
                         </tr>
                     </thead>

@@ -21,7 +21,6 @@ export default class ViewPost extends Component {
         axios.get(`http://localhost:3131/${this.props.match.params.id}`)
             .then(response => {
                 let blogpost = response.data.blogpost;
-                console.log(response.data);
                 this.setState({
                     title: blogpost.title,
                     author: blogpost.author,
